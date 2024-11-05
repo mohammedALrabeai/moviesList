@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
-import '../model/movie_model.dart';
-import 'movie_detail_screen.dart';
+import '../models/movie.dart';
+import 'movie_details.dart';
 
-class MovieListScreen extends StatelessWidget {
+class MoviesList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Movies'),
+        title: Text('Movies List'),
+        centerTitle: true,
       ),
       body: ListView.builder(
         itemCount: movies.length,
@@ -16,15 +17,19 @@ class MovieListScreen extends StatelessWidget {
           final movie = movies[index];
           return ListTile(
             leading: Image.network(movie.imageUrl,
-                width: 50, height: 50, fit: BoxFit.cover),
-            title: Text(movie.name),
-            subtitle: Text('${movie.year}'),
+                width: 55, height: 55, fit: BoxFit.fill),
+            title: Text(movie.title),
+            subtitle: Text(
+              '${movie.subtitle}',
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+            ),
             trailing: Icon(Icons.arrow_forward),
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => MovieDetailScreen(movie: movie),
+                  builder: (context) => MovieDetailDialog(movie: movie),
                 ),
               );
             },

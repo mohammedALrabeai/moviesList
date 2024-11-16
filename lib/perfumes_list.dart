@@ -1,26 +1,27 @@
 import 'package:flutter/material.dart';
 
-import '../models/movie.dart';
-import 'movie_details.dart';
+import 'models/perfume_modle.dart';
+import 'perfume_details.dart';
 
-class MoviesList extends StatelessWidget {
+class PerfumesList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Movies List'),
+        title: Text('Perfumes List'),
         centerTitle: true,
       ),
       body: ListView.builder(
-        itemCount: movies.length,
+        padding: EdgeInsets.all(16.0),
+        itemCount: perfumes.length,
         itemBuilder: (context, index) {
-          final movie = movies[index];
+          final movie = perfumes[index];
           return ListTile(
             leading: Image.network(movie.imageUrl,
                 width: 55, height: 55, fit: BoxFit.fill),
-            title: Text(movie.title),
+            title: Text(movie.name),
             subtitle: Text(
-              '${movie.subtitle}',
+              '${movie.description}',
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
             ),
@@ -29,7 +30,7 @@ class MoviesList extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => MovieDetailDialog(movie: movie),
+                  builder: (context) => PerfumeDetailDialog(movie: movie),
                 ),
               );
             },

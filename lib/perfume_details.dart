@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../models/movie.dart';
+import 'models/perfume_modle.dart';
 
-class MovieDetailDialog extends StatelessWidget {
-  final Movie movie;
+class PerfumeDetailDialog extends StatelessWidget {
+  final Perfume movie;
 
-  MovieDetailDialog({required this.movie});
+  PerfumeDetailDialog({required this.movie});
 
   @override
   Widget build(BuildContext context) {
@@ -26,17 +26,17 @@ class MovieDetailDialog extends StatelessWidget {
             ),
             SizedBox(height: 8),
             Text(
-              'Year: ${movie.year}',
+              'Year: ${movie.brand}',
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(height: 16),
             Text(
-              movie.title,
+              movie.name,
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 8),
             Text(
-              movie.subtitle,
+              movie.price.toString(),
               style: TextStyle(fontSize: 14),
             ),
             SizedBox(height: 16),
